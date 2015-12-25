@@ -1,0 +1,8 @@
+[package]
+name = "coiotest"
+version = "0.1.0"
+authors = ["Edward Yang <edward.yang6771@gmail.com>"]
+
+[dependencies]
+hyper = "0.7.1"
+coio = {git = "https://github.com/zonyitoo/coio-rs.git"}
