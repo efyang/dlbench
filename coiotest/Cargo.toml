@@ -4,5 +4,6 @@ version = "0.1.0"
 authors = ["Edward Yang <edward.yang6771@gmail.com>"]
 
 [dependencies]
-hyper = "0.7.1"
+download = {path = "../download"}
 coio = {git = "https://github.com/zonyitoo/coio-rs.git"}
+num_cpus = "0.2"

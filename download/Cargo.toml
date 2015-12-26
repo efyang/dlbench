@@ -1,8 +1,7 @@
 [package]
-name = "threadtest"
+name = "download"
 version = "0.1.0"
 authors = ["Edward Yang <edward.yang6771@gmail.com>"]
 
 [dependencies]
-num_cpus = "0.2.10"
-download = {path = "../download"}
+hyper = "0.7.1"
