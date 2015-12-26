@@ -1,8 +1,8 @@
 [package]
-name = "download"
+name = "singlethread"
 version = "0.1.0"
 authors = ["Edward Yang <edward.yang6771@gmail.com>"]
 
 [dependencies]
-#hyper = "0.7.1"
-curl = {git = "https://github.com/carllerche/curl-rust"}
+num_cpus = "0.2.10"
+download = {path = "../download"}

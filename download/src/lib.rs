@@ -11,7 +11,7 @@ use std::path::Path;
 use std::env::current_exe;
 use hyper::client::Client;
 
-pub const DOWNLOAD_LINK: &'static str = "http://127.0.0.1:8080/github-git-cheat-sheet.pdf";
+pub const DOWNLOAD_LINK: &'static str = "https://hassanolity.files.wordpress.com/2013/11/the_c_programming_language_2.pdf";
 
 pub fn download_url(url: &str, tid: usize) {
     let ce = current_exe().unwrap();
