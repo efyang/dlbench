@@ -1,3 +1,5 @@
+#![feature(test)]
+extern crate test;
 extern crate hyper;
 
 use std::io::prelude::*;
@@ -9,34 +11,31 @@ use std::path::Path;
 use std::env::current_exe;
 use hyper::client::Client;
 
-pub const DOWNLOAD_LINK: &'static str = "https://docs.python.org/3/archives/python-3.5.\
-                                         1-docs-pdf-a4.zip";
+pub const DOWNLOAD_LINK: &'static str = "http://127.0.0.1:8080/github-git-cheat-sheet.pdf";
 
 pub fn download_url(url: &str, tid: usize) {
     let ce = current_exe().unwrap();
     let cd = ce.parent().unwrap();
     let dldir = cd.join("downloads");
-    fs::create_dir_all(dldir.clone());
+    fs::create_dir_all(dldir.clone()).unwrap();
     let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
-    println!("Downloading to {}", filename.to_str().unwrap());
+    //println!("Downloading to {}", filename.to_str().unwrap());
     let mut client = Client::new();
     client.set_read_timeout(Some(Duration::from_millis(500)));
     let mut outfile = BufWriter::new(File::create(filename).unwrap());
     let mut stream = client.get(url).send().unwrap();
-    // let mut buf: [u8; 1] = [0];
-    // loop {
-    // match stream.read(&mut buf) {
-    // Ok(0) => break,
-    // Ok(_) => {
-    // outfile.write(&buf).unwrap();
-    // },
-    // Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
-    // Err(e) => panic!(e),
-    // }
-    // }
-    for byte in stream.bytes() {
-        outfile.write(&[byte.unwrap()]).unwrap();
+    let mut buf: [u8; 1] = [0; 1];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(_) => {
+                outfile.write(&buf).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
     }
+    outfile.flush().unwrap()
 }
 
 pub fn get_url_filename(url: &str) -> Option<&str> {
