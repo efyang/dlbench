@@ -1,8 +1,9 @@
 [root]
-name = "download"
+name = "singlethread"
 version = "0.1.0"
 dependencies = [
- "hyper 0.7.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "download 0.1.0",
+ "num_cpus 0.2.10 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -28,6 +29,13 @@ dependencies = [
  "rustc-serialize 0.3.16 (registry+https://github.com/rust-lang/crates.io-index)",
  "time 0.1.34 (registry+https://github.com/rust-lang/crates.io-index)",
  "url 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "download"
+version = "0.1.0"
+dependencies = [
+ "hyper 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -57,16 +65,16 @@ dependencies = [
 
 [[package]]
 name = "httparse"
-version = "1.1.1"
+version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "hyper"
-version = "0.7.2"
+version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "cookie 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "httparse 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "httparse 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "language-tags 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "mime 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -77,7 +85,7 @@ dependencies = [
  "time 0.1.34 (registry+https://github.com/rust-lang/crates.io-index)",
  "traitobject 0.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "typeable 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "unicase 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "unicase 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "url 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -218,19 +226,6 @@ version = "0.3.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "rustc_version"
-version = "0.1.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "semver 0.1.20 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "semver"
-version = "0.1.20"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
 name = "serde"
 version = "0.6.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -277,11 +272,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "unicase"
-version = "1.1.1"
+version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "rustc_version 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "url"
