@@ -42,6 +42,60 @@ pub fn download_url(url: &str, tid: usize) {
     outfile.flush().unwrap()
 }
 
+pub fn download_url_4(url: &str, tid: usize) {
+    let ce = current_exe().unwrap();
+    let cd = ce.parent().unwrap();
+    let dldir = cd.join("downloads");
+    fs::create_dir_all(dldir.clone()).unwrap();
+    let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
+    //println!("Downloading to {}", filename.to_str().unwrap());
+    let mut client = Client::new();
+    client.set_read_timeout(Some(Duration::from_millis(500)));
+    let mut outfile = BufWriter::new(File::create(filename).unwrap());
+    let mut stream = client.get(url).send().unwrap();
+    //let mut buf: [u8; 1] = [0; 1];
+    let mut buf: [u8; 4] = [0; 4];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(n) => {
+                outfile.write(&buf).unwrap();
+                outfile.write(&buf[..n]).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
+     }
+    outfile.flush().unwrap()
+}
+
+pub fn download_url_8(url: &str, tid: usize) {
+    let ce = current_exe().unwrap();
+    let cd = ce.parent().unwrap();
+    let dldir = cd.join("downloads");
+    fs::create_dir_all(dldir.clone()).unwrap();
+    let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
+    //println!("Downloading to {}", filename.to_str().unwrap());
+    let mut client = Client::new();
+    client.set_read_timeout(Some(Duration::from_millis(500)));
+    let mut outfile = BufWriter::new(File::create(filename).unwrap());
+    let mut stream = client.get(url).send().unwrap();
+    //let mut buf: [u8; 1] = [0; 1];
+    let mut buf: [u8; 8] = [0; 8];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(n) => {
+                outfile.write(&buf).unwrap();
+                outfile.write(&buf[..n]).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
+     }
+    outfile.flush().unwrap()
+}
+
 pub fn download_url_16(url: &str, tid: usize) {
     let ce = current_exe().unwrap();
     let cd = ce.parent().unwrap();
@@ -55,6 +109,60 @@ pub fn download_url_16(url: &str, tid: usize) {
     let mut stream = client.get(url).send().unwrap();
     //let mut buf: [u8; 1] = [0; 1];
     let mut buf: [u8; 16] = [0; 16];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(n) => {
+                outfile.write(&buf).unwrap();
+                outfile.write(&buf[..n]).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
+     }
+    outfile.flush().unwrap()
+}
+
+pub fn download_url_32(url: &str, tid: usize) {
+    let ce = current_exe().unwrap();
+    let cd = ce.parent().unwrap();
+    let dldir = cd.join("downloads");
+    fs::create_dir_all(dldir.clone()).unwrap();
+    let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
+    //println!("Downloading to {}", filename.to_str().unwrap());
+    let mut client = Client::new();
+    client.set_read_timeout(Some(Duration::from_millis(500)));
+    let mut outfile = BufWriter::new(File::create(filename).unwrap());
+    let mut stream = client.get(url).send().unwrap();
+    //let mut buf: [u8; 1] = [0; 1];
+    let mut buf: [u8; 32] = [0; 32];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(n) => {
+                outfile.write(&buf).unwrap();
+                outfile.write(&buf[..n]).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
+     }
+    outfile.flush().unwrap()
+}
+
+pub fn download_url_64(url: &str, tid: usize) {
+    let ce = current_exe().unwrap();
+    let cd = ce.parent().unwrap();
+    let dldir = cd.join("downloads");
+    fs::create_dir_all(dldir.clone()).unwrap();
+    let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
+    //println!("Downloading to {}", filename.to_str().unwrap());
+    let mut client = Client::new();
+    client.set_read_timeout(Some(Duration::from_millis(500)));
+    let mut outfile = BufWriter::new(File::create(filename).unwrap());
+    let mut stream = client.get(url).send().unwrap();
+    //let mut buf: [u8; 1] = [0; 1];
+    let mut buf: [u8; 64] = [0; 64];
     loop {
         match stream.read(&mut buf) {
             Ok(0) => break,
@@ -178,6 +286,60 @@ pub fn download_url_1024(url: &str, tid: usize) {
     outfile.flush().unwrap()
 }
 
+pub fn download_url_2048(url: &str, tid: usize) {
+    let ce = current_exe().unwrap();
+    let cd = ce.parent().unwrap();
+    let dldir = cd.join("downloads");
+    fs::create_dir_all(dldir.clone()).unwrap();
+    let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
+    //println!("Downloading to {}", filename.to_str().unwrap());
+    let mut client = Client::new();
+    client.set_read_timeout(Some(Duration::from_millis(500)));
+    let mut outfile = BufWriter::new(File::create(filename).unwrap());
+    let mut stream = client.get(url).send().unwrap();
+    //let mut buf: [u8; 1] = [0; 1];
+    let mut buf: [u8; 2048] = [0; 2048];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(n) => {
+                outfile.write(&buf).unwrap();
+                outfile.write(&buf[..n]).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
+     }
+    outfile.flush().unwrap()
+}
+
+pub fn download_url_4096(url: &str, tid: usize) {
+    let ce = current_exe().unwrap();
+    let cd = ce.parent().unwrap();
+    let dldir = cd.join("downloads");
+    fs::create_dir_all(dldir.clone()).unwrap();
+    let filename = dldir.join(&format!("t{}{}", tid, get_url_filename(url).unwrap()));
+    //println!("Downloading to {}", filename.to_str().unwrap());
+    let mut client = Client::new();
+    client.set_read_timeout(Some(Duration::from_millis(500)));
+    let mut outfile = BufWriter::new(File::create(filename).unwrap());
+    let mut stream = client.get(url).send().unwrap();
+    //let mut buf: [u8; 1] = [0; 1];
+    let mut buf: [u8; 4096] = [0; 4096];
+    loop {
+        match stream.read(&mut buf) {
+            Ok(0) => break,
+            Ok(n) => {
+                outfile.write(&buf).unwrap();
+                outfile.write(&buf[..n]).unwrap();
+            }
+            //Err(ref e) if e.kind() == std::io::ErrorKind::Interrupted => break,
+            Err(e) => panic!(e),
+        }
+     }
+    outfile.flush().unwrap()
+}
+
 pub fn get_url_filename(url: &str) -> Option<&str> {
     url.split('/').last()
 }
@@ -187,13 +349,27 @@ mod tests {
     use super::*;
     use test::Bencher;
 
+    //#[bench]
+    //fn buf_1(b: &mut Bencher) {
+        //b.iter(|| {
+            //download_url(DL_LINK_KR, 0);
+        //});
+    //}
+
     #[bench]
-    fn buf_1(b: &mut Bencher) {
+    fn buf_4(b: &mut Bencher) {
         b.iter(|| {
-            download_url(DL_LINK_KR, 0);
+            download_url_4(DL_LINK_KR, 0);
         });
     }
 
+    #[bench]
+    fn buf_8(b: &mut Bencher) {
+        b.iter(|| {
+            download_url_8(DL_LINK_KR, 0);
+        });
+    }
+    
     #[bench]
     fn buf_16(b: &mut Bencher) {
         b.iter(|| {
@@ -201,6 +377,20 @@ mod tests {
         });
     }
     
+    #[bench]
+    fn buf_32(b: &mut Bencher) {
+        b.iter(|| {
+            download_url_32(DL_LINK_KR, 0);
+        });
+    }
+    
+    #[bench]
+    fn buf_64(b: &mut Bencher) {
+        b.iter(|| {
+            download_url_64(DL_LINK_KR, 0);
+        });
+    }
+
     #[bench]
     fn buf_128(b: &mut Bencher) {
         b.iter(|| {
@@ -228,5 +418,20 @@ mod tests {
             download_url_1024(DL_LINK_KR, 0);
         });
     }
+    
+    #[bench]
+    fn buf_2048(b: &mut Bencher) {
+        b.iter(|| {
+            download_url_2048(DL_LINK_KR, 0);
+        });
+    }
+
+    #[bench]
+    fn buf_4096(b: &mut Bencher) {
+        b.iter(|| {
+            download_url_4096(DL_LINK_KR, 0);
+        });
+    }
+
 
 }
